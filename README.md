@@ -1,4 +1,4 @@
-# psie_przedszkole
+# Psie przedszkole
 
 System obsługi psiego przedszkola realizowany w ramach przedmiotu **Usługi sieciowe w biznesie**.
 

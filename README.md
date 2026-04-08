@@ -101,4 +101,6 @@ Pliki pomocnicze do uruchamiania projektu lokalnie, na przyklad `docker-compose.
 
 ## Autorzy
 
+Marek Karbarz (Xler) - Właściciel repozytorium
+ 
 Projekt realizowany zespolowo w ramach przedmiotu **Uslugi sieciowe w biznesie**.

@@ -54,7 +54,7 @@ ls
 
 Powinieneś widzieć pliki projektu, np.:
 - `README.md`
-- `CONTRIBUTING.md`
+- `ZASADY_WSPÓŁPRACY.md`
 - katalog `docs/`
 - katalog `backend/`
 

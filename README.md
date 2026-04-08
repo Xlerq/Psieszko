@@ -1,7 +1,7 @@
 # Psie Przedszkole
 
 Jesli dopiero zaczynasz prace z tym repo:
-- przeczytaj [`CONTRIBUTING.md`](./CONTRIBUTING.md),
+- przeczytaj [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md),
 - zajrzyj do [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md),
 - nie pracuj bezposrednio na branchu `main`.
 
@@ -92,7 +92,7 @@ Pliki pomocnicze do uruchamiania projektu lokalnie, na przyklad `docker-compose.
 
 1. Sklonuj repozytorium.
 2. Przeczytaj:
-   - [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+   - [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md)
    - [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md)
 3. Utworz wlasny branch.
 4. Wprowadz zmiany.

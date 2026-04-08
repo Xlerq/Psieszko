@@ -1,6 +1,44 @@
 # Zasady wspolpracy w repozytorium
 
-Ten plik opisuje zasady pracy z repozytorium projektu **psie_przedszkole**.
+Ten plik laczy w jednym miejscu najwazniejsze zasady pracy z repozytorium projektu **psie_przedszkole** oraz krotka instrukcje startowa dla osob, ktore dopiero dolaczaja do pracy.
+
+## Start
+
+Jesli dopiero zaczynasz:
+
+1. Zaktualizuj lokalne repozytorium:
+
+```bash
+git checkout main
+git pull origin main
+```
+
+2. Utworz osobny branch:
+
+```bash
+git checkout -b docs/nazwa-zmiany
+```
+
+3. Wprowadz zmiany i sprawdz status:
+
+```bash
+git status
+```
+
+4. Dodaj pliki i utworz commit:
+
+```bash
+git add .
+git commit -m "docs: opis zmiany"
+```
+
+5. Wypchnij branch:
+
+```bash
+git push -u origin docs/nazwa-zmiany
+```
+
+6. Otworz Pull Request na GitHubie.
 
 ## 1. Jezyk projektu
 

@@ -1,103 +1,43 @@
 # Psie przedszkole
 
-System obsługi psiego przedszkola realizowany w ramach przedmiotu **Usługi sieciowe w biznesie**.
+Repozytorium projektu realizowanego w ramach przedmiotu **Uslugi sieciowe w biznesie**.
 
-Repozytorium zawiera komplet materiałów projektowych:
-- dokumentację analityczną,
-- dokumentację projektową,
-- implementację backendu w Java,
-- testy,
-- materiały do prezentacji.
+Na ten moment repo zawiera glownie materialy organizacyjne i instrukcje do pracy z `git` oraz `GitHub`.
+To dobre miejsce, zeby uporzadkowac wspolprace zespolu przed dodaniem dokumentacji projektowej i kodu aplikacji.
+
+## Co jest w repo
+
+- [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md) - zasady pracy w zespole, nazewnictwo branchy i commitow
+- [`START_TUTAJ_GIT/`](./START_TUTAJ_GIT/) - instrukcje krok po kroku dla osob, ktore dopiero zaczynaja prace z Gitem i GitHubem
+
+## Od czego zaczac
+
+Jesli pierwszy raz pracujesz z tym repo:
+
+1. Otworz [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md).
+2. Przeczytaj [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md).
+3. Pracuj na osobnym branchu, nie bezposrednio na `main`.
 
 ## Cel projektu
 
-Celem projektu jest stworzenie aplikacji serwującej usługi sieciowe w architekturze REST dla wybranej dziedziny biznesowej — w tym przypadku **psiego przedszkola**.
+Celem projektu jest przygotowanie i rozwijanie systemu dla psiego przedszkola, najpewniej w formie aplikacji z backendem i API.
+Szczegolowy zakres funkcjonalny powinien zostac doprecyzowany wraz z rozwojem dokumentacji projektu.
 
-## Stack technologiczny
+## Stan repozytorium
 
-Planowany stos technologiczny:
-- Java
-- Spring Boot
-- Spring Data JPA
-- REST API
-- PostgreSQL
-- Git + GitHub
+Obecnie w repo sa glownie:
 
-## Opis katalogów
+- instrukcje do obslugi `git` i `GitHub`,
+- zasady wspolpracy,
+- podstawy organizacji dalszych prac.
 
-### `docs/00-organizacja/`
-Dokumenty organizacyjne projektu:
-- opis projektu,
-- zakres projektu,
-- role w zespole,
-- harmonogram,
-- zasady pracy.
+W kolejnych etapach warto dodac m.in.:
 
-### `docs/01-analiza/`
-Materiały analityczne:
-- wymagania,
-- odkrywanie pojęć,
-- model dziedziny,
-- przypadki użycia,
-- diagramy UML analityczne.
-
-### `docs/02-projekt/`
-Materiały projektowe:
-- architektura systemu,
-- podział na moduły,
-- model bazy danych,
-- decyzje architektoniczne,
-- diagramy UML projektowe.
-
-### `docs/03-api/`
-Opis API:
-- endpointy REST,
-- kontrakty,
-- scenariusze użycia API,
-- przykłady requestów i response’ów.
-
-### `docs/04-testy/`
-Materiały testowe:
-- plan testów,
-- przypadki testowe,
-- raporty,
-- kolekcje Bruno / inne narzędzia.
-
-### `docs/05-prezentacja/`
-Materiały końcowe:
-- scenariusz demo,
-- checklisty,
-- screeny,
-- materiały na prezentację.
-
-### `backend/`
-Kod aplikacji backendowej w Java / Spring.
-
-### `infra/`
-Pliki pomocnicze do uruchamiania projektu lokalnie, np. Docker Compose.
-
-## Zasady pracy
-
-Najważniejsze zasady:
-- nie pracujemy bezpośrednio na branchu `main`,
-- każda większa zmiana powinna mieć własny branch,
-- zmiany trafiają do `main` przez Pull Request,
-- commit powinien mieć krótki i sensowny opis,
-- dokumentacja jest tak samo ważna jak kod.
-
-Szczegóły znajdują się w pliku [`CONTRIBUTING.md`](./CONTRIBUTING.md).
-
-## Jak zacząć
-
-1. Sklonuj repozytorium.
-2. Przeczytaj:
-   - `CONTRIBUTING.md`
-   - `Instrukcje/*`
-3. Utwórz własny branch.
-4. Wprowadź zmiany.
-5. Wypchnij branch na GitHub.
-6. Otwórz Pull Request.
+- strukture katalogow dla dokumentacji,
+- backend aplikacji,
+- testy,
+- opis zakresu i funkcji systemu.
 
 ## Autorzy
-Do wypełnienia
-Projekt realizowany zespołowo w ramach przedmiotu **Usługi sieciowe w biznesie**.
+
+Projekt realizowany zespolowo w ramach przedmiotu **Uslugi sieciowe w biznesie**.

@@ -67,13 +67,15 @@ Nie wrzucamy jednego gigantycznego PR-a z wieloma różnymi tematami.
 
 ## 6. Struktura zmian
 
-Przed dodaniem nowego pliku sprawdź, czy trafia do właściwego katalogu:
-- analiza -> `docs/01-analiza/`
-- projekt -> `docs/02-projekt/`
-- API -> `docs/03-api/`
-- testy -> `docs/04-testy/`
-- instrukcje -> `docs/99-instrukcje/`
-- kod -> `backend/`
+Obecnie repo ma prostą strukturę:
+- instrukcje Git i GitHub -> `START_TUTAJ_GIT/`
+- zasady współpracy i pliki główne -> katalog główny repo
+
+Jeśli w kolejnych etapach pojawią się nowe obszary projektu, warto dodać dla nich osobne katalogi, np.:
+- `docs/`
+- `backend/`
+- `frontend/`
+- `testy/`
 
 ## 7. Czego nie robimy
 
@@ -99,9 +101,9 @@ git diff --staged
 
 ## 9. Dla osób początkujących
 
-Jeśli pierwszy raz używasz Gita, przeczytaj plik:
+Jeśli pierwszy raz używasz Gita, zacznij od folderu:
 
-`docs/99-instrukcje/git-pierwsze-kroki.md`
+`START_TUTAJ_GIT/`
 
 ## 10. Najważniejsza zasada
 

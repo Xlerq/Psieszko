@@ -23,27 +23,6 @@ Planowany stos technologiczny:
 - PostgreSQL
 - Git + GitHub
 
-## Struktura repozytorium
-
-```text
-.
-├── .github/
-│   ├── CODEOWNERS
-│   └── pull_request_template.md
-├── docs/
-│   ├── 00-organizacja/
-│   ├── 01-analiza/
-│   ├── 02-projekt/
-│   ├── 03-api/
-│   ├── 04-testy/
-│   ├── 05-prezentacja/
-│   └── 99-instrukcje/
-├── backend/
-├── infra/
-├── CONTRIBUTING.md
-└── README.md
-```
-
 ## Opis katalogów
 
 ### `docs/00-organizacja/`
@@ -91,13 +70,6 @@ Materiały końcowe:
 - screeny,
 - materiały na prezentację.
 
-### `docs/99-instrukcje/`
-Instrukcje dla zespołu:
-- pierwsze kroki z Gitem,
-- sposób pracy z repo,
-- tworzenie pull requestów,
-- rozwiązywanie konfliktów.
-
 ### `backend/`
 Kod aplikacji backendowej w Java / Spring.
 
@@ -120,12 +92,12 @@ Szczegóły znajdują się w pliku [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 1. Sklonuj repozytorium.
 2. Przeczytaj:
    - `CONTRIBUTING.md`
-   - `docs/99-instrukcje/git-pierwsze-kroki.md`
+   - `Instrukcje/*`
 3. Utwórz własny branch.
 4. Wprowadź zmiany.
 5. Wypchnij branch na GitHub.
 6. Otwórz Pull Request.
 
 ## Autorzy
-
+Do wypełnienia
 Projekt realizowany zespołowo w ramach przedmiotu **Usługi sieciowe w biznesie**.

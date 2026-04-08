@@ -1,0 +1,35 @@
+# System and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.*
+
+# Java / Spring / Gradle / Maven
+target/
+build/
+out/
+bin/
+.gradle/
+.classpath
+.project
+.settings/
+
+# Package managers and tools
+node_modules/
+coverage/
+
+# Archives and temporary files
+*.tmp
+*.temp
+*.bak
+*.zip

@@ -1,42 +1,117 @@
-# Psie przedszkole
+# psie_przedszkole
 
-Repozytorium projektu realizowanego w ramach przedmiotu **Uslugi sieciowe w biznesie**.
+To repozytorium jest przygotowane jako **docelowa struktura projektu**, zeby nie trzeba bylo przebudowywac `README` przy kazdej malej zmianie.
+Nie wszystkie katalogi musza byc od razu wypelnione, ale kazdy z nich ma konkretne przeznaczenie i warto od poczatku trzymac sie tego podzialu.
 
-Na ten moment repo zawiera glownie materialy organizacyjne i instrukcje do pracy z `git` oraz `GitHub`.
-To dobre miejsce, zeby uporzadkowac wspolprace zespolu przed dodaniem dokumentacji projektowej i kodu aplikacji.
+Jesli dopiero zaczynasz prace z tym repo:
+- przeczytaj [`CONTRIBUTING.md`](./CONTRIBUTING.md),
+- zajrzyj do [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md),
+- nie pracuj bezposrednio na branchu `main`.
 
-## Co jest w repo
+System obslugi psiego przedszkola realizowany w ramach przedmiotu **Uslugi sieciowe w biznesie**.
 
-- [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md) - zasady pracy w zespole, nazewnictwo branchy i commitow
-- [`START_TUTAJ_GIT/`](./START_TUTAJ_GIT/) - instrukcje krok po kroku dla osob, ktore dopiero zaczynaja prace z Gitem i GitHubem
-
-## Od czego zaczac
-
-Jesli pierwszy raz pracujesz z tym repo:
-
-1. Otworz [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md).
-2. Przeczytaj [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md).
-3. Pracuj na osobnym branchu, nie bezposrednio na `main`.
+Repozytorium zawiera komplet materialow projektowych:
+- dokumentacje analityczna,
+- dokumentacje projektowa,
+- implementacje backendu w Java,
+- testy,
+- materialy do prezentacji.
 
 ## Cel projektu
 
-Celem projektu jest przygotowanie i rozwijanie systemu dla psiego przedszkola, najpewniej w formie aplikacji z backendem i API.
-Szczegolowy zakres funkcjonalny powinien zostac doprecyzowany wraz z rozwojem dokumentacji projektu.
+Celem projektu jest stworzenie aplikacji serwujacej uslugi sieciowe w architekturze REST dla wybranej dziedziny biznesowej, w tym przypadku **psiego przedszkola**.
 
-## Stan repozytorium
+## Stack technologiczny
 
-Obecnie w repo sa glownie:
+Planowany stos technologiczny:
+- Java
+- Spring Boot
+- Spring Data JPA
+- REST API
+- PostgreSQL
+- Git + GitHub
 
-- instrukcje do obslugi `git` i `GitHub`,
-- zasady wspolpracy,
-- podstawy organizacji dalszych prac.
+## Opis katalogow
 
-W kolejnych etapach warto dodac m.in.:
+### `docs/00-organizacja/`
+Dokumenty organizacyjne projektu:
+- opis projektu,
+- zakres projektu,
+- role w zespole,
+- harmonogram,
+- zasady pracy.
 
-- strukture katalogow dla dokumentacji,
-- backend aplikacji,
-- testy,
-- opis zakresu i funkcji systemu.
+### `docs/01-analiza/`
+Materialy analityczne:
+- wymagania,
+- odkrywanie pojec,
+- model dziedziny,
+- przypadki uzycia,
+- diagramy UML analityczne.
+
+### `docs/02-projekt/`
+Materialy projektowe:
+- architektura systemu,
+- podzial na moduly,
+- model bazy danych,
+- decyzje architektoniczne,
+- diagramy UML projektowe.
+
+### `docs/03-api/`
+Opis API:
+- endpointy REST,
+- kontrakty,
+- scenariusze uzycia API,
+- przyklady requestow i response'ow.
+
+### `docs/04-testy/`
+Materialy testowe:
+- plan testow,
+- przypadki testowe,
+- raporty,
+- kolekcje Bruno lub inne narzedzia.
+
+### `docs/05-prezentacja/`
+Materialy koncowe:
+- scenariusz demo,
+- checklisty,
+- screeny,
+- materialy na prezentacje.
+
+### `START_TUTAJ_GIT/`
+Instrukcje dla zespolu:
+- pierwsze kroki z Gitem,
+- sposob pracy z repo,
+- tworzenie pull requestow,
+- rozwiazywanie konfliktow.
+
+### `backend/`
+Kod aplikacji backendowej w Java i Spring.
+
+### `infra/`
+Pliki pomocnicze do uruchamiania projektu lokalnie, na przyklad `docker-compose.yml`.
+
+## Zasady pracy
+
+Najwazniejsze zasady:
+- nie pracujemy bezposrednio na branchu `main`,
+- kazda wieksza zmiana powinna miec wlasny branch,
+- zmiany trafiaja do `main` przez Pull Request,
+- commit powinien miec krotki i sensowny opis,
+- dokumentacja jest tak samo wazna jak kod.
+
+Szczegoly znajduja sie w pliku [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+## Jak zaczac
+
+1. Sklonuj repozytorium.
+2. Przeczytaj:
+   - [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+   - [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md)
+3. Utworz wlasny branch.
+4. Wprowadz zmiany.
+5. Wypchnij branch na GitHub.
+6. Otworz Pull Request.
 
 ## Autorzy
 

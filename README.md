@@ -1,7 +1,4 @@
-# psie_przedszkole
-
-To repozytorium jest przygotowane jako **docelowa struktura projektu**, zeby nie trzeba bylo przebudowywac `README` przy kazdej malej zmianie.
-Nie wszystkie katalogi musza byc od razu wypelnione, ale kazdy z nich ma konkretne przeznaczenie i warto od poczatku trzymac sie tego podzialu.
+# Psie Przedszkole
 
 Jesli dopiero zaczynasz prace z tym repo:
 - przeczytaj [`CONTRIBUTING.md`](./CONTRIBUTING.md),
@@ -90,17 +87,6 @@ Kod aplikacji backendowej w Java i Spring.
 
 ### `infra/`
 Pliki pomocnicze do uruchamiania projektu lokalnie, na przyklad `docker-compose.yml`.
-
-## Zasady pracy
-
-Najwazniejsze zasady:
-- nie pracujemy bezposrednio na branchu `main`,
-- kazda wieksza zmiana powinna miec wlasny branch,
-- zmiany trafiaja do `main` przez Pull Request,
-- commit powinien miec krotki i sensowny opis,
-- dokumentacja jest tak samo wazna jak kod.
-
-Szczegoly znajduja sie w pliku [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## Jak zaczac
 

@@ -12,12 +12,6 @@ git --version
 
 Jeśli pokazuje wersję, to jest OK.
 
-Jeśli nie działa, na Arch Linuxie:
-
-```bash
-sudo pacman -S git
-```
-
 ## Jak pobrać repo
 
 1. Wejdź na stronę repozytorium na GitHubie.
@@ -30,10 +24,10 @@ sudo pacman -S git
 git clone ADRES_REPO
 ```
 
-Przykład:
+Czyli
 
 ```bash
-git clone https://github.com/TWOJ_LOGIN/psie_przedszkole.git
+git clone https://github.com/Xlerq/psie_przedszkole.git
 ```
 
 ## Jak wejść do folderu projektu

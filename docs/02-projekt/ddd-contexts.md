@@ -3,14 +3,9 @@
 Ten dokument mapuje diagramy analityczne z `docs/01-analiza` na aktualny uklad pakietow DDD w kodzie.
 
 ## Uzasadnienie architektury
-
-Przyjety podzial jest zgodny z materialami z wykladu o architekturze aplikacji korporacyjnych:
-
 - system jest dzielony na wyrazne czesci o jasno okreslonej odpowiedzialnosci,
 - logika przypadkow uzycia trafia do warstwy `application`,
 - logika dziedzinowa i centralne pojecia biznesowe trafiaja do warstwy `domain`.
-
-Podejscie jest tez spojne z przykladowym projektem prowadzacego, w ktorym nalezy wskazac centralne pojecia modelu, ich asocjacje oraz przygotowac model projektowy w stylu DDD.
 
 ## Struktura pakietow
 

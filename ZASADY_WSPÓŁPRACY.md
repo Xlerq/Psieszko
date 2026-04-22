@@ -11,7 +11,8 @@ W projekcie uzywamy **jezyka polskiego** w:
 - opisach issue,
 - komentarzach organizacyjnych.
 
-Kod moze zawierac nazewnictwo techniczne po angielsku, jesli wynika to z dobrych praktyk programistycznych.
+Kod należycie należy pisać po angielksu
+
 
 ## 2. Ogolne zasady
 

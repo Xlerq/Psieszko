@@ -33,3 +33,4 @@ coverage/
 *.temp
 *.bak
 *.zip
+/data/

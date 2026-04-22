@@ -33,3 +33,7 @@ coverage/
 *.temp
 *.bak
 *.zip
+
+#Ai
+.codex
+.claude

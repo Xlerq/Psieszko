@@ -9,12 +9,14 @@ Thumbs.db
 # Logs
 *.log
 logs/
+log.txt
 
 # Environment files
 .env
 .env.*
 
 # Java / Spring / Gradle / Maven
+sources/
 target/
 build/
 out/

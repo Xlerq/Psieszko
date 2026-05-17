@@ -78,7 +78,7 @@ Przed dodaniem nowego pliku sprawdz, czy trafia do wlasciwego katalogu:
 - testy -> `docs/04-testy/`
 - prezentacja -> `docs/05-prezentacja/`
 - instrukcje -> `START_TUTAJ_GIT/`
-- kod -> `backend/`
+- kod -> `src/`
 - pliki uruchomieniowe i srodowiskowe -> `infra/`
 
 ## 7. Czego nie robimy

@@ -50,7 +50,7 @@ Powinieneś widzieć pliki projektu, np.:
 - `README.md`
 - `ZASADY_WSPÓŁPRACY.md`
 - katalog `docs/`
-- katalog `backend/`
+- katalog `src/`
 
 ## Jak sprawdzić, na jakim jesteś branchu
 

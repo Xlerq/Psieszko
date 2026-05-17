@@ -82,7 +82,7 @@ Instrukcje dla zespolu:
 - tworzenie pull requestow,
 - rozwiazywanie konfliktow.
 
-### `backend/`
+### `src/`
 Kod aplikacji backendowej w Java i Spring.
 
 ### `infra/`

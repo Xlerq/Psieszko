@@ -1,7 +1,6 @@
 package edu.prz.psieszko.kindergartenstructure.domain;
 
-/**
- * Repository abstraction for Kindergarten aggregates.
- */
-public interface KindergartenRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface KindergartenRepository extends JpaRepository<Kindergarten, Long> {
 }

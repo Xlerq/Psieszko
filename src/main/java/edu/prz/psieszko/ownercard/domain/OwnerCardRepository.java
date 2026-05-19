@@ -1,7 +1,6 @@
 package edu.prz.psieszko.ownercard.domain;
 
-/**
- * Repository abstraction for OwnerCard aggregates.
- */
-public interface OwnerCardRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OwnerCardRepository extends JpaRepository<OwnerCard, Long> {
 }

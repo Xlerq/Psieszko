@@ -61,7 +61,7 @@ AuditableEntity
             └── konkretne agregaty i encje domenowe
 ```
 
-Przykład zastosowania: agregaty takie jak `Dog`, `OwnerCard`, `Reservation`, `HealthCard`, `Lesson`, `DailyJournal` i `Kindergarten` dziedziczą po `BaseEntity`, dzięki czemu mają wspólny mechanizm identyfikatora oraz wersjonowania.
+W obecnym kodzie po `BaseEntity` dziedziczą m.in. `Dog`, `OwnerCard`, `Owner`, `Reservation`, `Kindergarten`, `Employee` i `Role`. `HealthCard`, `Lesson` i `DailyJournal` są obecnie szkicami agregatów i nie dziedziczą jeszcze po `BaseEntity`.
 
 ---
 

@@ -5,11 +5,11 @@ import edu.prz.psieszko.foundation.domain.Identity;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public record EmployeeId(@JsonValue Long id) implements Identity {
+public record OwnerCardId(@JsonValue Long id) implements Identity {
 
-    public EmployeeId {
+    public OwnerCardId {
         if (id == null) {
-            throw new IllegalArgumentException("Employee id cannot be null");
+            throw new IllegalArgumentException("Owner card id cannot be null");
         }
     }
 }

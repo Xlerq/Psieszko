@@ -1,15 +1,14 @@
 package edu.prz.psieszko.dogs.domain.dog;
 
+import edu.prz.psieszko.foundation.domain.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-public class Dog {
-
-  @Id
-  Long id;
+@EqualsAndHashCode(callSuper = true)
+public class Dog extends BaseEntity {
 
   String name;
 }

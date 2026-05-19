@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "owners")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 public class Owner extends BaseEntity {
 
     @Column(nullable = false)

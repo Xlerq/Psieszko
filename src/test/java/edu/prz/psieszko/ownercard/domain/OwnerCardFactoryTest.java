@@ -1,6 +1,7 @@
 package edu.prz.psieszko.ownercard.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.prz.psieszko.shared.identity.DogId;
@@ -12,12 +13,12 @@ class OwnerCardFactoryTest {
 
     @Test
     void createsOwnerCardWithOwner() {
-        OwnerCard ownerCard = ownerCardFactory.create(
+        OwnerCard ownerCard = ownerCardFactory.create(new OwnerCardFactory.Input(
                 "Anna",
                 "Kowalska",
                 "500600700",
                 "anna.kowalska@example.com"
-        );
+        ));
 
         assertEquals("Anna", ownerCard.getOwner().getFirstName());
         assertEquals("Kowalska", ownerCard.getOwner().getLastName());
@@ -28,15 +29,27 @@ class OwnerCardFactoryTest {
 
     @Test
     void storesDogReferencesAsSharedIdentities() {
-        OwnerCard ownerCard = ownerCardFactory.create(
+        OwnerCard ownerCard = ownerCardFactory.create(new OwnerCardFactory.Input(
                 "Anna",
                 "Kowalska",
                 "500600700",
                 "anna.kowalska@example.com"
-        );
+        ));
 
         ownerCard.addDog(new DogId(12L));
 
         assertTrue(ownerCard.getDogIds().contains(new DogId(12L)));
+    }
+
+    @Test
+    void doesNotExposeMutableDogReferences() {
+        OwnerCard ownerCard = ownerCardFactory.create(new OwnerCardFactory.Input(
+                "Anna",
+                "Kowalska",
+                "500600700",
+                "anna.kowalska@example.com"
+        ));
+
+        assertThrows(UnsupportedOperationException.class, () -> ownerCard.getDogIds().add(new DogId(12L)));
     }
 }

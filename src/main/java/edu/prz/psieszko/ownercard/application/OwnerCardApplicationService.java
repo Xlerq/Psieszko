@@ -16,12 +16,12 @@ public class OwnerCardApplicationService {
 
     @Transactional
     public OwnerCard createOwnerCard(CreateOwnerCardCommand command) {
-        OwnerCard ownerCard = ownerCardFactory.create(
+        OwnerCard ownerCard = ownerCardFactory.create(new OwnerCardFactory.Input(
                 command.firstName(),
                 command.lastName(),
                 command.phoneNumber(),
                 command.email()
-        );
+        ));
 
         return ownerCardRepository.save(ownerCard);
     }

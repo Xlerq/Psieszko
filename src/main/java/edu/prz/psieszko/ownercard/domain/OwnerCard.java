@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import lombok.AccessLevel;
@@ -29,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "owner_cards")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 public class OwnerCard extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, optional = false)
@@ -53,5 +54,9 @@ public class OwnerCard extends BaseEntity {
             throw new IllegalArgumentException("Dog id cannot be null");
         }
         dogIds.add(dogId);
+    }
+
+    public Set<DogId> getDogIds() {
+        return Collections.unmodifiableSet(dogIds);
     }
 }

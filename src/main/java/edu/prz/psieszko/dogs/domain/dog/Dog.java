@@ -1,16 +1,15 @@
 package edu.prz.psieszko.dogs.domain.dog;
 
+import edu.prz.psieszko.foundation.domain.BaseEntity;
 import edu.prz.psieszko.shared.identity.OwnerCardId;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-public class Dog {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@EqualsAndHashCode(callSuper = true)
+public class Dog extends BaseEntity {
 
     private String name;
 

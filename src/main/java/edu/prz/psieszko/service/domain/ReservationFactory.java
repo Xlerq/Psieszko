@@ -1,7 +1,10 @@
 package edu.prz.psieszko.service.domain;
 
-/**
- * Factory responsible for creating Reservation aggregates.
- */
+import edu.prz.psieszko.shared.identity.DogId;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 public interface ReservationFactory {
+    Reservation create(DogId dogId, LocalDateTime startDate, LocalDateTime endDate, BigDecimal paymentAmount);
 }

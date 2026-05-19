@@ -1,4 +1,4 @@
-package edu.prz.psieszko.reservation.domain.reservation;
+package edu.prz.psieszko.service.domain;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;

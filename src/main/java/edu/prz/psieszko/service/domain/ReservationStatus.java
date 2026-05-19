@@ -1,4 +1,4 @@
-package edu.prz.psieszko.reservation.domain.reservation;
+package edu.prz.psieszko.service.domain;
 
 public enum ReservationStatus {
     CREATED,

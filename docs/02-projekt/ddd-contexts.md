@@ -1,202 +1,280 @@
 # Konteksty DDD i agregaty — Psie Przedszkole
 
+Ten dokument opisuje aktualny podział projektu na bounded contexty oraz stan najważniejszych agregatów. Opis jest zgodny z obecnym układem pakietów w kodzie.
+
+---
+
 ## Mapa bounded contextów
 
-System podzielony jest na siedem bounded contextów:
+System jest podzielony na następujące bounded contexty:
 
-```
+| Bounded context | Pakiet Java | Główny agregat | Aktualny stan |
+| --- | --- | --- | --- |
+| Karta właściciela | `edu.prz.psieszko.ownercard` | `OwnerCard` | pełny agregat |
+| Dane psa | `edu.prz.psieszko.dogs` | `Dog` | pełny agregat |
+| Usługa / rezerwacje | `edu.prz.psieszko.service` | `Reservation` | pełny agregat |
+| Zdrowie | `edu.prz.psieszko.health` | `HealthCard` | szkielet / podstawowy agregat |
+| Lekcje | `edu.prz.psieszko.lesson` | `Lesson` | szkielet / podstawowy agregat |
+| Dziennik dnia | `edu.prz.psieszko.dailyjournal` | `DailyJournal` | szkielet / podstawowy agregat |
+| Struktura przedszkola | `edu.prz.psieszko.kindergartenstructure` | `Kindergarten` | częściowo zaimplementowany |
+
+```text
 ┌──────────────────────┐   ┌──────────────────────┐   ┌──────────────────────┐
-│     ownercard        │   │        dogs          │   │       service        │
+│      ownercard       │   │         dogs         │   │        service       │
 │                      │   │                      │   │                      │
-│  ► OwnerCard (pełny) │   │  ► Dog (pełny)       │   │  ► Reservation       │
-│    Owner             │   │                      │   │                      │
+│  OwnerCard           │   │  Dog                 │   │  Reservation         │
+│  Owner               │   │  Breed, Diet         │   │  Payment             │
 └──────────────────────┘   └──────────────────────┘   └──────────────────────┘
 
 ┌──────────────────────┐   ┌──────────────────────┐   ┌──────────────────────┐
-│  kindergartenstructure│  │     dailyjournal     │   │        health        │
+│ kindergartenstructure│   │     dailyjournal     │   │        health        │
 │                      │   │                      │   │                      │
-│  ► Kindergarten(pełny)│  │  ► DailyJournal      │   │  ► HealthCard        │
-│    Employee, Role    │   │                      │   │                      │
+│  Kindergarten        │   │  DailyJournal        │   │  HealthCard          │
+│  Employee, Role      │   │                      │   │                      │
 └──────────────────────┘   └──────────────────────┘   └──────────────────────┘
 
                         ┌──────────────────────┐
                         │        lesson        │
                         │                      │
-                        │  ► Lesson            │
+                        │  Lesson              │
                         └──────────────────────┘
 
-                  ════════════════════════════════
-                            Shared Kernel
-                     (DogId, EmployeeId, Identity)
-                  ════════════════════════════════
-                            Foundation
-               (BaseEntity, AuditableEntity, StandardFactory,
-                    DomainException, NotExistsException)
+                  Shared Kernel: typowane identyfikatory
+                  Foundation: klasy bazowe i wspólne kontrakty
 ```
 
 ---
 
 ## Foundation
 
-Pakiet: `edu.prz.psieszko.foundation`
+Pakiet: `edu.prz.psieszko.foundation.domain`
 
-Wspólna baza techniczna dla wszystkich kontekstów. Szczegóły w `docs/02-projekt/architektura.md`.
+Foundation zawiera wspólne elementy używane w różnych kontekstach:
+
+- `Identity`,
+- `AuditableEntity`,
+- `BaseEntity`,
+- `StandardFactory`,
+- `DomainException`,
+- `NotExistsException`.
+
+Szczegółowy opis Foundation znajduje się w `docs/02-projekt/architektura.md`.
 
 ---
 
 ## Shared Kernel
 
-Pakiet: `edu.prz.psieszko.shared`
+Pakiet: `edu.prz.psieszko.shared.identity`
 
-Typowane identyfikatory współdzielone między kontekstami: `DogId`, `EmployeeId`.
+Shared Kernel zawiera typowane identyfikatory wykorzystywane do łączenia agregatów bez tworzenia bezpośrednich referencji obiektowych między nimi:
 
-Agregaty nie przechowują referencji do obiektów z innych kontekstów — używają wyłącznie typowanych ID z Shared Kernel.
+- `DogId`,
+- `EmployeeId`,
+- `HealthCardId`,
+- `LessonId`,
+- `OwnerCardId`,
+- `ReservationId`.
+
+Przykłady użycia:
+
+- `Dog` przechowuje `OwnerCardId`, czyli identyfikator karty właściciela.
+- `Reservation` przechowuje `DogId`, czyli identyfikator psa przypisanego do rezerwacji.
+
+Dzięki temu agregaty zachowują wyraźniejsze granice i nie są silnie połączone przez bezpośrednie referencje do obiektów z innych kontekstów.
 
 ---
 
 ## Agregaty
 
-### OwnerCard — Karta właściciela
+### OwnerCard — karta właściciela
 
-**Pakiet:** `edu.prz.psieszko.ownercard`  
-**Status: pełny** — zaimplementowany agregat, fabryka, repozytorium, serwis aplikacyjny, kontroler REST
+**Pakiet:** `edu.prz.psieszko.ownercard`
 
-**Aggregate root:** `OwnerCard`  
-**Encje wewnętrzne:** `Owner`
+**Status:** pełny agregat.
 
-**Pola OwnerCard:**
-- `owner` — encja `Owner` (relacja `@OneToOne`, kaskada ALL)
-- `dogIds` — zbiór `Set<DogId>` (psy właściciela, powiązanie przez ID)
+**Aggregate root:** `OwnerCard`
 
-**Pola Owner:**
-- `firstName`, `lastName` — imię i nazwisko (wymagane)
-- `phoneNumber`, `email` — dane kontaktowe (wymagane, z walidacją)
+**Elementy modelu:**
 
-**Zachowania:**
-- `OwnerCard(Owner)` — konstruktor pakietowy, tworzony przez fabrykę
-- `addDog(DogId)` — dodanie psa do karty właściciela
-- `getDogIds()` — zwraca niemutowalny widok zbioru psów
-- `Owner.updateContact(phoneNumber, email)` — aktualizacja danych kontaktowych
+- `OwnerCard`,
+- `Owner`,
+- `OwnerCardFactory`,
+- `OwnerCardRepository`,
+- serwis aplikacyjny,
+- kontroler REST.
 
-**Fabryka:** `OwnerCardFactory` — przyjmuje `Input(firstName, lastName, phoneNumber, email)`, tworzy `OwnerCard` z `Owner`
+`OwnerCard` reprezentuje kartę właściciela psa. Agregat zawiera dane właściciela oraz powiązania z psami. Powiązania z psami powinny być realizowane przez typowane identyfikatory, a nie przez bezpośrednie trzymanie obiektów `Dog`.
 
-**REST API:** `POST /api/owner-cards` — tworzy nową kartę właściciela, zwraca `201 Created`
+**Znaczenie biznesowe:**
 
-**Tabele bazy danych:** `owner_cards`, `owners`, `owner_card_dogs`
+Ten agregat odpowiada za dane właściciela oraz powiązanie właściciela z jego psami.
 
 ---
 
-### Dog — Pies
+### Dog — pies
 
-**Pakiet:** `edu.prz.psieszko.dogs`  
-**Status: pełny** — zaimplementowany agregat, fabryka, repozytorium, serwis aplikacyjny
+**Pakiet:** `edu.prz.psieszko.dogs.domain.dog`
+
+**Status:** pełny agregat.
 
 **Aggregate root:** `Dog`
 
-**Pola Dog:**
-- `id` — identyfikator (Long)
-- `name` — imię psa
+**Elementy modelu:**
 
-**Fabryka:** `DogFactory` (interfejs — do implementacji)  
-**Repozytorium:** `DogRepository extends JpaRepository<Dog, Long>`
+- `Dog`,
+- `Breed`,
+- `Diet`,
+- `BehavioralProfile`,
+- `AnimalTrait`,
+- `DogFactory`,
+- `DogFactoryImpl`,
+- `DogRepository`.
 
----
+**Najważniejsze pola agregatu `Dog`:**
 
-### Kindergarten — Struktura przedszkola
+- `name` — imię psa,
+- `breed` — rasa psa,
+- `diet` — dieta psa,
+- `behavioralProfile` — profil zachowania psa,
+- `animalTrait` — cecha zwierzęcia,
+- `ownerCardId` — identyfikator karty właściciela (`OwnerCardId`).
 
-**Pakiet:** `edu.prz.psieszko.kindergartenstructure`  
-**Status: pełny** — zaimplementowany agregat, fabryka (konkretna), repozytorium, serwis aplikacyjny
+`Dog` nie jest tylko prostym obiektem z polami `id` i `name`. Aktualna implementacja zawiera także rasę, dietę, profil zachowania, cechę zwierzęcia oraz powiązanie z kartą właściciela przez `OwnerCardId`.
 
-**Aggregate root:** `Kindergarten`  
-**Encje wewnętrzne:** `Employee`, `Role`
+**Znaczenie biznesowe:**
 
-**Pola Kindergarten:**
-- `name` — nazwa przedszkola
-- `employees` — lista pracowników (`@OneToMany`)
-- `roles` — lista ról (`@OneToMany`)
-
-**Pola Employee:**
-- `firstName`, `lastName` — imię i nazwisko pracownika
-
-**Pola Role:**
-- `name` — nazwa roli
-
-**Fabryka:** `KindergartenFactory` — tworzy `Kindergarten` z nazwy (String)  
-**Repozytorium:** `KindergartenRepository extends JpaRepository<Kindergarten, Long>`
-
-> Uwaga: `Kindergarten` ma więcej niż jedną encję wewnętrzną (`Employee` i `Role`).
+Agregat `Dog` opisuje dane psa potrzebne do obsługi psiego przedszkola, w tym informacje o właścicielu, zachowaniu i podstawowych cechach psa.
 
 ---
 
-### Reservation — Rezerwacja
+### Reservation — rezerwacja
 
-**Pakiet:** `edu.prz.psieszko.service`  
-**Status: szkielet** — zdefiniowany agregat, fabryka i repozytorium (interfejsy), serwis aplikacyjny
+**Pakiet:** `edu.prz.psieszko.service.domain`
+
+**Status:** pełny agregat.
 
 **Aggregate root:** `Reservation`
 
-**Planowane powiązania:**
-- `Dog` (przez `DogId`)
-- `Lesson`
-- `Payment`
-- `VeterinaryVisit`
+**Elementy modelu:**
+
+- `Reservation`,
+- `Payment`,
+- `ReservationStatus`,
+- `PaymentStatus`,
+- `ReservationFactory`,
+- `ReservationFactoryImpl`,
+- `ReservationRepository`,
+- serwis aplikacyjny.
+
+**Najważniejsze pola agregatu `Reservation`:**
+
+- `dogId` — identyfikator psa (`DogId`),
+- `startDate` — data i godzina rozpoczęcia rezerwacji,
+- `endDate` — data i godzina zakończenia rezerwacji,
+- `status` — status rezerwacji,
+- `payment` — płatność osadzona w rezerwacji.
+
+**Najważniejsze zachowania agregatu:**
+
+- `changeDate(newStartDate, newEndDate)` — zmiana terminu rezerwacji z walidacją dat i statusu,
+- `markPaymentAsPaid()` — oznaczenie płatności jako opłaconej,
+- `cancel()` — anulowanie rezerwacji z kontrolą statusu.
+
+`Reservation` nie jest już szkieletem. Aktualnie posiada logikę biznesową, płatność, statusy, fabrykę, repozytorium i serwis aplikacyjny.
+
+**Znaczenie biznesowe:**
+
+Agregat `Reservation` odpowiada za zapisanie rezerwacji pobytu/usługi dla psa oraz kontrolę jej terminu, statusu i płatności.
 
 ---
 
-### DailyJournal — Dziennik dnia
+### HealthCard — karta zdrowia
 
-**Pakiet:** `edu.prz.psieszko.dailyjournal`  
-**Status: szkielet** — zdefiniowany agregat, fabryka i repozytorium (interfejsy), serwis aplikacyjny
+**Pakiet:** `edu.prz.psieszko.health`
 
-**Aggregate root:** `DailyJournal`
-
-**Planowane powiązania:**
-- `Dog` (przez `DogId`)
-- `Activity`
-- `Incident`
-- `Meal`
-
----
-
-### HealthCard — Karta zdrowia
-
-**Pakiet:** `edu.prz.psieszko.health`  
-**Status: szkielet** — zdefiniowany agregat, fabryka i repozytorium (interfejsy), serwis aplikacyjny
+**Status:** szkielet / podstawowy agregat.
 
 **Aggregate root:** `HealthCard`
 
-**Planowane powiązania:**
-- `Dog` (przez `DogId`)
-- `Veterinarian`
-- `VeterinaryVisit`
-- `Vaccination`
-- `Medicine`
+**Planowana odpowiedzialność:**
+
+Agregat ma odpowiadać za informacje zdrowotne psa, np. wizyty weterynaryjne, szczepienia, leki i dane lekarza weterynarii.
 
 ---
 
-### Lesson — Zajęcia
+### Lesson — zajęcia
 
-**Pakiet:** `edu.prz.psieszko.lesson`  
-**Status: szkielet** — zdefiniowany agregat, fabryka i repozytorium (interfejsy), serwis aplikacyjny
+**Pakiet:** `edu.prz.psieszko.lesson`
+
+**Status:** szkielet / podstawowy agregat.
 
 **Aggregate root:** `Lesson`
 
-**Planowane powiązania:**
-- `Employee` (przez `EmployeeId`)
-- `Topic`
-- `LearningZone`
-- `TrainingEquipment`
+**Planowana odpowiedzialność:**
+
+Agregat ma odpowiadać za zajęcia realizowane w psim przedszkolu, np. temat zajęć, strefę nauki, sprzęt treningowy i prowadzącego pracownika.
 
 ---
 
-## Podsumowanie — które agregaty są pełne
+### DailyJournal — dziennik dnia
 
-| Agregat | Kontekst | Pełny? | Więcej niż jedna encja? |
-|---------|----------|--------|------------------------|
-| `OwnerCard` | ownercard | tak | tak (`Owner`) |
-| `Dog` | dogs | tak | nie |
-| `Kindergarten` | kindergartenstructure | tak | tak (`Employee`, `Role`) |
-| `Reservation` | service | nie (szkielet) | — |
-| `DailyJournal` | dailyjournal | nie (szkielet) | — |
-| `HealthCard` | health | nie (szkielet) | — |
-| `Lesson` | lesson | nie (szkielet) | — |
+**Pakiet:** `edu.prz.psieszko.dailyjournal`
+
+**Status:** szkielet / podstawowy agregat.
+
+**Aggregate root:** `DailyJournal`
+
+**Planowana odpowiedzialność:**
+
+Agregat ma odpowiadać za dzienny zapis informacji o psie, np. aktywności, incydenty i posiłki.
+
+---
+
+### Kindergarten — struktura przedszkola
+
+**Pakiet:** `edu.prz.psieszko.kindergartenstructure`
+
+**Status:** częściowo zaimplementowany agregat.
+
+**Aggregate root:** `Kindergarten`
+
+**Elementy modelu:**
+
+- `Kindergarten`,
+- `Employee`,
+- `Role`,
+- `KindergartenFactory`,
+- `KindergartenRepository`,
+- serwis aplikacyjny.
+
+`Kindergarten` ma encje wewnętrzne `Employee` i `Role`, ale nie należy go oznaczać jako w pełni ukończony kontekst, ponieważ aktualny serwis aplikacyjny nie zawiera pełnych przypadków użycia, a kontekst nie posiada kompletnej warstwy REST.
+
+**Agregat z więcej niż jedną encją:**
+
+`Kindergarten` jest agregatem, który ma więcej niż jedną encję wewnętrzną: `Employee` oraz `Role`.
+
+---
+
+## Podsumowanie agregatów
+
+| Agregat | Kontekst | Status | Elementy wewnętrzne / powiązane | Więcej niż jedna encja wewnętrzna? |
+| --- | --- | --- | --- | --- |
+| `OwnerCard` | `ownercard` | pełny | `Owner` | nie |
+| `Dog` | `dogs` | pełny | `Breed`, `Diet`, `BehavioralProfile`, `AnimalTrait`, `OwnerCardId` | nie |
+| `Reservation` | `service` | pełny | `Payment`, `ReservationStatus`, `PaymentStatus`, `DogId` | nie |
+| `Kindergarten` | `kindergartenstructure` | częściowy | `Employee`, `Role` | tak |
+| `HealthCard` | `health` | szkielet / podstawowy | planowane dane zdrowotne | nieustalone |
+| `Lesson` | `lesson` | szkielet / podstawowy | planowane dane zajęć | nieustalone |
+| `DailyJournal` | `dailyjournal` | szkielet / podstawowy | planowane wpisy dzienne | nieustalone |
+
+---
+
+## Wniosek projektowy
+
+Projekt posiada wspólne elementy Foundation, Shared Kernel z typowanymi identyfikatorami oraz kilka agregatów zgodnych z podejściem DDD. Najważniejsze pełne agregaty wymagane w zadaniu to:
+
+- `OwnerCard`,
+- `Dog`,
+- `Reservation`.
+
+Dodatkowo `Kindergarten` pokazuje przykład agregatu z więcej niż jedną encją wewnętrzną (`Employee` i `Role`), ale nie powinien być traktowany jako w pełni ukończony kontekst aplikacyjny.

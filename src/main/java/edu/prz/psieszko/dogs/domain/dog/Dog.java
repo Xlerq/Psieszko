@@ -2,9 +2,12 @@ package edu.prz.psieszko.dogs.domain.dog;
 
 import edu.prz.psieszko.foundation.domain.BaseEntity;
 import edu.prz.psieszko.shared.identity.OwnerCardId;
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 @Entity
 @Data

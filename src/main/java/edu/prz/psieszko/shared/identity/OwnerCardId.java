@@ -6,4 +6,10 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public record OwnerCardId(@JsonValue Long id) implements Identity {
+
+    public OwnerCardId {
+        if (id == null) {
+            throw new IllegalArgumentException("Owner card id cannot be null");
+        }
+    }
 }

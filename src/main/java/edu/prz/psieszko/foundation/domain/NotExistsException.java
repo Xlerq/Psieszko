@@ -1,8 +1,6 @@
 package edu.prz.psieszko.foundation.domain;
 
-import jakarta.validation.ValidationException;
-
-public class NotExistsException extends ValidationException {
+public class NotExistsException extends DomainException {
 
     protected NotExistsException(String message) {
         super(message);

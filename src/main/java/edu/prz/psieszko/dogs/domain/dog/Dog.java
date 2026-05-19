@@ -8,6 +8,8 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data

@@ -99,6 +99,22 @@ Pliki pomocnicze do uruchamiania projektu lokalnie, na przyklad `docker-compose.
 5. Wypchnij branch na GitHub.
 6. Otworz Pull Request.
 
+## Adresy lokalne
+
+Po uruchomieniu aplikacji na domyslnym porcie `8080` dostepne sa:
+
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- OpenAPI JSON: http://localhost:8080/v3/api-docs
+- H2 Console: http://localhost:8080/h2-console
+
+Konfiguracja bazy H2 jest zgodna z `src/main/resources/application.properties`:
+
+```text
+JDBC URL: jdbc:h2:file:./data/psieszko
+Username: sa
+Password:
+```
+
 ## Autorzy
 
 Marek Karbarz (Xler) - Właściciel repozytorium

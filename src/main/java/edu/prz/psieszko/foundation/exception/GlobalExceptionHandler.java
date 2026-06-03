@@ -70,6 +70,14 @@ public class GlobalExceptionHandler {
         return problem(HttpStatus.BAD_REQUEST, exception.getMessage(), request);
     }
 
+    @ExceptionHandler({IllegalArgumentException.class, IllegalStateException.class})
+    public ResponseEntity<ProblemResponse> handleInvalidState(
+            RuntimeException exception,
+            HttpServletRequest request
+    ) {
+        return problem(HttpStatus.BAD_REQUEST, exception.getMessage(), request);
+    }
+
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ProblemResponse> handleEntityNotFound(
             EntityNotFoundException exception,

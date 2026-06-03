@@ -24,4 +24,26 @@ public class DogApplicationService {
                                     ownerCardId);
         return dogRepository.save(dog);
     }
+
+    @Transactional(readOnly = true)
+    public Dog getDog(Long dogId) {
+        return dogRepository.findById(dogId)
+                .orElseThrow(() -> new java.util.NoSuchElementException("Dog does not exist"));
+    }
+
+    @Transactional
+    public Dog changeDiet(Long dogId, Diet diet) {
+        Dog dog = getDog(dogId);
+        dog.changeDiet(diet);
+
+        return dogRepository.save(dog);
+    }
+
+    @Transactional
+    public Dog changeBehavioralProfile(Long dogId, BehavioralProfile behavioralProfile) {
+        Dog dog = getDog(dogId);
+        dog.changeBehavioralProfile(behavioralProfile);
+
+        return dogRepository.save(dog);
+    }
 }

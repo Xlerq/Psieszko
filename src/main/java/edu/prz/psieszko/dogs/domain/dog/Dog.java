@@ -33,4 +33,18 @@ public class Dog extends BaseEntity {
     @Embedded
     @AttributeOverride(name = "id", column = @Column(name = "owner_card_id"))
     private OwnerCardId ownerCardId;
+
+    public void changeDiet(Diet diet) {
+        if (diet == null) {
+            throw new IllegalArgumentException("Diet cannot be null");
+        }
+        this.diet = diet;
+    }
+
+    public void changeBehavioralProfile(BehavioralProfile behavioralProfile) {
+        if (behavioralProfile == null) {
+            throw new IllegalArgumentException("Behavioral profile cannot be null");
+        }
+        this.behavioralProfile = behavioralProfile;
+    }
 }

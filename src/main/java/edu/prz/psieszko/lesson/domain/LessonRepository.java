@@ -1,7 +1,6 @@
 package edu.prz.psieszko.lesson.domain;
 
-/**
- * Repository abstraction for Lesson aggregates.
- */
-public interface LessonRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LessonRepository extends JpaRepository<Lesson, Long> {
 }

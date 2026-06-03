@@ -56,6 +56,10 @@ public class OwnerCard extends BaseEntity {
         dogIds.add(dogId);
     }
 
+    public void updateOwnerContact(String phoneNumber, String email) {
+        owner.updateContact(phoneNumber, email);
+    }
+
     public Set<DogId> getDogIds() {
         return Collections.unmodifiableSet(dogIds);
     }

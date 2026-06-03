@@ -23,4 +23,34 @@ public class ReservationApplicationService {
         Reservation reservation = reservationFactory.create(dogId, startDate, endDate, paymentAmount);
         return reservationRepository.save(reservation);
     }
+
+    @Transactional(readOnly = true)
+    public Reservation getReservation(Long reservationId) {
+        return reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new java.util.NoSuchElementException("Reservation does not exist"));
+    }
+
+    @Transactional
+    public Reservation changeReservationDate(Long reservationId, LocalDateTime startDate, LocalDateTime endDate) {
+        Reservation reservation = getReservation(reservationId);
+        reservation.changeDate(startDate, endDate);
+
+        return reservationRepository.save(reservation);
+    }
+
+    @Transactional
+    public Reservation cancelReservation(Long reservationId) {
+        Reservation reservation = getReservation(reservationId);
+        reservation.cancel();
+
+        return reservationRepository.save(reservation);
+    }
+
+    @Transactional
+    public Reservation markPaymentAsPaid(Long reservationId) {
+        Reservation reservation = getReservation(reservationId);
+        reservation.markPaymentAsPaid();
+
+        return reservationRepository.save(reservation);
+    }
 }

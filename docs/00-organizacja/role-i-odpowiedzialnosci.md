@@ -56,14 +56,6 @@ Produkty pracy osoby od prezentacji:
 - zrzuty ekranu lub materiały pomocnicze,
 - ustalenie kolejności wypowiedzi członków zespołu.
 
-## Punkt kontrolny prezentacji
-
-Data prezentacji nie została jeszcze potwierdzona w repozytorium. Po ustaleniu terminu przez zespół albo prowadzącego należy dopisać ją tutaj jako punkt kontrolny:
-
-| Punkt kontrolny | Data | Odpowiedzialny | Status |
-| --- | --- | --- | --- |
-| Prezentacja projektu | do ustalenia | osoba od prezentacji / zespół | oczekuje na potwierdzenie |
-
 ## Odpowiedzialności osób w zespole
 
 Podział poniżej wynika z dotychczasowych zmian w repozytorium i powinien być aktualizowany po kolejnych PR-ach.
@@ -71,7 +63,11 @@ Podział poniżej wynika z dotychczasowych zmian w repozytorium i powinien być 
 | Osoba | Rola / obszar | Odpowiedzialność |
 | --- | --- | --- |
 | Marek Karbarz / Xler | właściciel repozytorium, koordynacja | organizacja repozytorium, scalanie PR-ów, porządkowanie dokumentacji, koordynacja pracy zespołu |
+| Dawid Hołbowski | analityk | współautor koncepcji projektu, przygotowanie wstępnej wizji systemu, identyfikacja głównych procesów biznesowych i założeń domenowych |
+| Kacper Kolbuch | analityk | współautor pierwotnego planu projektu, modelowanie głównych obszarów domeny, definiowanie zakresu funkcjonalnego i kierunku rozwoju systemu |
 | Karolina Kisała | analityk | wymagania, odkrywanie pojęć, model dziedziny i dokumentacja analityczna |
+| Kacper Sowa | analityk | analiza przypadków użycia, doprecyzowanie wymagań funkcjonalnych oraz wsparcie dokumentacji analitycznej |
+| olakopi | analityk / developer | typowane identyfikatory shared kernel i uporządkowanie foundation domain |
 | Szymon Hawryluk | developer | kontekst psa, agregat `Dog`, kontekst rezerwacji, agregat `Reservation`, testy aplikacyjne |
 | Maciej Nowak | developer | kontekst zdrowia, kontekst lekcji, poprawki importów i testów |
 | Bartek Kogut | developer / dokumentacja projektowa | architektura, konteksty DDD, doprecyzowanie dziedziczenia po `BaseEntity` |
@@ -79,12 +75,5 @@ Podział poniżej wynika z dotychczasowych zmian w repozytorium i powinien być 
 | Małgorzata Jagieła | developer | początkowe klasy `foundation domain`, kontekst struktury przedszkola / pracowników |
 | Krzysztof Koza | developer / tester techniczny | warstwa foundation API, globalna obsługa błędów i testy obsługi wyjątków |
 | Huttman15 | developer | agregat karty właściciela i poprawki w kontekście `ownercard` |
-| Maciej Koryl | developer | startowa wersja aplikacji |
-| olakopi | developer | typowane identyfikatory shared kernel i uporządkowanie foundation domain |
-
-## Zasady utrzymywania podziału prac
-
-- Każdy większy obszar funkcjonalny powinien mieć wskazaną osobę odpowiedzialną.
-- Po każdym PR-ze należy dopisać albo zaktualizować odpowiedzialność, jeśli zmienił się zakres prac.
-- Jeśli jedna osoba przejmuje zadanie po innej osobie, w tabeli należy zostawić informację o dotychczasowym i aktualnym właścicielu obszaru.
-- Termin prezentacji należy dopisać od razu po potwierdzeniu daty przez prowadzącego albo zespół.
+| Marcin Kapanowski | osoba od prezentacji / analityk | przygotowanie prezentacji projektu, opracowanie materiałów demonstracyjnych oraz wsparcie analizy biznesowej |
+| Radosław Kielar | osoba od prezentacji / analitky | współtworzenie prezentacji końcowej, przygotowanie opisu funkcjonalności systemu i dokumentacji wspierającej prezentację |

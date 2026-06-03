@@ -68,12 +68,12 @@ Podział poniżej wynika z dotychczasowych zmian w repozytorium i powinien być 
 | Karolina Kisała | analityk | wymagania, odkrywanie pojęć, model dziedziny i dokumentacja analityczna |
 | Kacper Sowa | analityk | analiza przypadków użycia, doprecyzowanie wymagań funkcjonalnych oraz wsparcie dokumentacji analitycznej |
 | olakopi | analityk / developer | typowane identyfikatory shared kernel i uporządkowanie foundation domain |
-| Szymon Hawryluk | developer | kontekst psa, agregat `Dog`, kontekst rezerwacji, agregat `Reservation`, testy aplikacyjne |
+| Szymon Hawryluk | developer / tester | kontekst psa, agregat `Dog`, kontekst rezerwacji, agregat `Reservation`, testy aplikacyjne |
 | Maciej Nowak | developer | kontekst zdrowia, kontekst lekcji, poprawki importów i testów |
 | Bartek Kogut | developer / dokumentacja projektowa | architektura, konteksty DDD, doprecyzowanie dziedziczenia po `BaseEntity` |
 | Bartek Kędziora | developer | kontekst dziennika dnia i struktury przedszkola |
 | Małgorzata Jagieła | developer | początkowe klasy `foundation domain`, kontekst struktury przedszkola / pracowników |
-| Krzysztof Koza | developer / tester techniczny | warstwa foundation API, globalna obsługa błędów i testy obsługi wyjątków |
+| Krzysztof Koza | developer / tester | warstwa foundation API, globalna obsługa błędów i testy obsługi wyjątków |
 | Huttman15 | developer | agregat karty właściciela i poprawki w kontekście `ownercard` |
 | Marcin Kapanowski | osoba od prezentacji / analityk | przygotowanie prezentacji projektu, opracowanie materiałów demonstracyjnych oraz wsparcie analizy biznesowej |
 | Radosław Kielar | osoba od prezentacji / analitky | współtworzenie prezentacji końcowej, przygotowanie opisu funkcjonalności systemu i dokumentacji wspierającej prezentację |

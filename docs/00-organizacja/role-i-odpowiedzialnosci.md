@@ -76,4 +76,4 @@ Podział poniżej wynika z dotychczasowych zmian w repozytorium i powinien być 
 | Krzysztof Koza | developer / tester | warstwa foundation API, globalna obsługa błędów i testy obsługi wyjątków |
 | Huttman15 | developer | agregat karty właściciela i poprawki w kontekście `ownercard` |
 | Marcin Kapanowski | osoba od prezentacji / analityk | przygotowanie prezentacji projektu, opracowanie materiałów demonstracyjnych oraz wsparcie analizy biznesowej |
-| Radosław Kielar | osoba od prezentacji / analitky | współtworzenie prezentacji końcowej, przygotowanie opisu funkcjonalności systemu i dokumentacji wspierającej prezentację |
+| Radosław Kielar | osoba od prezentacji / analityk | współtworzenie prezentacji końcowej, przygotowanie opisu funkcjonalności systemu i dokumentacji wspierającej prezentację |

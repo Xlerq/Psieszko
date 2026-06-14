@@ -6,9 +6,9 @@ Projekt modeluje procesy związane z obsługą właścicieli, psów, rezerwacji,
 
 ## Status projektu
 
-Projekt jest ukończony w zakresie wymaganym na potrzeby przedmiotu i może zostać zarchiwizowany jako finalna wersja portfolio. Repozytorium pozostaje dostępne jako przykład pracy zespołowej, dokumentacji projektowej oraz implementacji backendu w Java/Spring Boot.
+Projekt jest ukończony w zakresie wymaganym na potrzeby przedmiotu i został zarchiwizowany. Repozytorium pozostaje dostępne jako przykład pracy zespołowej, dokumentacji projektowej oraz implementacji backendu w Java/Spring Boot.
 
-> Uwaga: repozytorium powstało jako projekt akademicki. Przed ponownym wykorzystaniem kodu poza celami edukacyjnymi należy uzgodnić prawa z autorami projektu.
+> Uwaga: repozytorium powstało jako projekt akademicki.
 
 ## Najważniejsze elementy
 
@@ -159,7 +159,7 @@ Jeśli dopiero zaczynasz pracę z tym repozytorium:
 6. Otwórz Pull Request.
 
 ## Autorzy
+[`role-i-odpowiedzialnosci.md`](docs/00-organizacja/role-i-odpowiedzialnosci.md)
 
-Marek Karbarz (Xler) - Właściciel repozytorium
 
 Projekt realizowany zespołowo w ramach przedmiotu **Usługi sieciowe w biznesie**.

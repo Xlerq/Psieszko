@@ -1,107 +1,70 @@
 # Psie Przedszkole
 
-Jesli dopiero zaczynasz prace z tym repo:
-- przeczytaj [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md),
-- zajrzyj do [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md),
-- nie pracuj bezposrednio na branchu `main`.
+Backend REST API dla psiego przedszkola, przygotowany jako zespołowy projekt akademicki z przedmiotu **Usługi sieciowe w biznesie**.
 
-System obslugi psiego przedszkola realizowany w ramach przedmiotu **Uslugi sieciowe w biznesie**.
+Projekt modeluje procesy związane z obsługą właścicieli, psów, rezerwacji, lekcji szkoleniowych, kart zdrowia, dzienników dnia oraz struktury pracowników przedszkola. Kod został zorganizowany w stylu inspirowanym **Domain-Driven Design**, z wyraźnym podziałem na bounded contexty, warstwę aplikacyjną i warstwę domenową.
 
-Repozytorium zawiera komplet materialow projektowych:
-- dokumentacje analityczna,
-- dokumentacje projektowa,
-- implementacje backendu w Java,
-- testy,
-- materialy do prezentacji.
+## Status projektu
 
-## Cel projektu
+Projekt jest ukończony w zakresie wymaganym na potrzeby przedmiotu i może zostać zarchiwizowany jako finalna wersja portfolio. Repozytorium pozostaje dostępne jako przykład pracy zespołowej, dokumentacji projektowej oraz implementacji backendu w Java/Spring Boot.
 
-Celem projektu jest stworzenie aplikacji serwujacej uslugi sieciowe w architekturze REST dla wybranej dziedziny biznesowej, w tym przypadku **psiego przedszkola**.
+> Uwaga: repozytorium powstało jako projekt akademicki. Przed ponownym wykorzystaniem kodu poza celami edukacyjnymi należy uzgodnić prawa z autorami projektu.
+
+## Najważniejsze elementy
+
+- REST API dla zarządzania psim przedszkolem.
+- Model domenowy podzielony na bounded contexty.
+- Typowane identyfikatory agregatów w shared kernel.
+- Warstwa aplikacyjna z serwisami przypadków użycia.
+- Kontrolery REST z walidacją danych wejściowych.
+- Utrwalanie danych przez Spring Data JPA i H2.
+- Dokumentacja analityczna, projektowa i API.
+- Testy jednostkowe oraz testy warstwy aplikacyjnej/kontrolerów.
 
 ## Stack technologiczny
 
-Planowany stos technologiczny:
-- Java
-- Spring Boot
+- Java 21
+- Spring Boot 4
+- Spring Web MVC
 - Spring Data JPA
-- REST API
-- PostgreSQL
-- Git + GitHub
+- H2 Database
+- Gradle
+- Lombok
+- SpringDoc OpenAPI / Swagger UI
+- JUnit
 
-## Opis katalogow
+## Uruchamianie lokalne
 
-### `docs/00-organizacja/`
-Dokumenty organizacyjne projektu:
-- opis projektu,
-- zakres projektu,
-- role w zespole,
-- harmonogram,
-- zasady pracy.
+Wymagania:
 
-### `docs/01-analiza/`
-Materialy analityczne:
-- wymagania,
-- odkrywanie pojec,
-- model dziedziny,
-- przypadki uzycia,
-- diagramy UML analityczne.
+- JDK 21
+- Git
 
-### `docs/02-projekt/`
-Materialy projektowe:
-- architektura systemu,
-- podzial na moduly,
-- model bazy danych,
-- decyzje architektoniczne,
-- diagramy UML projektowe.
+Uruchomienie aplikacji:
 
-### `docs/03-api/`
-Opis API:
-- endpointy REST,
-- kontrakty,
-- scenariusze uzycia API,
-- przyklady requestow i response'ow.
+```bash
+./gradlew bootRun
+```
 
-### `docs/04-testy/`
-Materialy testowe:
-- plan testow,
-- przypadki testowe,
-- raporty,
-- kolekcje Bruno lub inne narzedzia.
+Na Windowsie:
 
-### `docs/05-prezentacja/`
-Materialy koncowe:
-- scenariusz demo,
-- checklisty,
-- screeny,
-- materialy na prezentacje.
+```powershell
+.\gradlew.bat bootRun
+```
 
-### `START_TUTAJ_GIT/`
-Instrukcje dla zespolu:
-- pierwsze kroki z Gitem,
-- sposob pracy z repo,
-- tworzenie pull requestow,
-- rozwiazywanie konfliktow.
+## Testy
 
-### `src/`
-Kod aplikacji backendowej w Java i Spring.
+Uruchomienie testów:
 
-### `infra/`
-Pliki pomocnicze do uruchamiania projektu lokalnie, na przyklad `docker-compose.yml`.
+```bash
+./gradlew test
+```
 
-## Jak zaczac
-
-1. Sklonuj repozytorium.
-2. Przeczytaj:
-   - [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md)
-   - [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md)
-3. Utworz wlasny branch.
-4. Wprowadz zmiany.
-5. Wypchnij branch na GitHub.
-6. Otworz Pull Request.
+Testy są również uruchamiane automatycznie w GitHub Actions po zmianach w repozytorium.
 
 ## Adresy lokalne
 
-Po uruchomieniu aplikacji na domyslnym porcie `8080` dostepne sa:
+Po uruchomieniu aplikacji na domyślnym porcie `8080` dostępne są:
 
 - Swagger UI: http://localhost:8080/swagger-ui/index.html
 - OpenAPI JSON: http://localhost:8080/v3/api-docs
@@ -115,8 +78,88 @@ Username: sa
 Password:
 ```
 
+## Dokumentacja
+
+Repozytorium zawiera komplet materiałów projektowych:
+
+- [`docs/00-organizacja/`](./docs/00-organizacja/) - organizacja pracy zespołu,
+- [`docs/01-analiza/`](./docs/01-analiza/) - wymagania, słownik pojęć i model dziedziny,
+- [`docs/02-projekt/`](./docs/02-projekt/) - architektura i konteksty DDD,
+- [`docs/03-api/`](./docs/03-api/) - opis endpointów REST i przykłady użycia.
+
+Najważniejsze dokumenty:
+
+- [Architektura systemu](./docs/02-projekt/architektura.md)
+- [Konteksty DDD i agregaty](./docs/02-projekt/ddd-contexts.md)
+- [Wymagania biznesowe](./docs/01-analiza/wymagania.md)
+
+## Opis katalogów
+
+### `docs/00-organizacja/`
+Dokumenty organizacyjne projektu:
+- opis projektu,
+- zakres projektu,
+- role w zespole,
+- harmonogram,
+- zasady pracy.
+
+### `docs/01-analiza/`
+Materiały analityczne:
+- wymagania,
+- odkrywanie pojęć,
+- model dziedziny,
+- przypadki użycia,
+- diagramy UML analityczne.
+
+### `docs/02-projekt/`
+Materiały projektowe:
+- architektura systemu,
+- podział na moduły,
+- model bazy danych,
+- decyzje architektoniczne,
+- diagramy UML projektowe.
+
+### `docs/03-api/`
+Opis API:
+- endpointy REST,
+- kontrakty,
+- scenariusze użycia API,
+- przykłady requestów i response'ów.
+
+### `docs/04-testy/`
+Katalog zarezerwowany na dodatkowe materiały testowe. Aktualne testy automatyczne znajdują się w `src/test/java`.
+
+### `docs/05-prezentacja/`
+Katalog zarezerwowany na materiały prezentacyjne, jeśli będą potrzebne poza dokumentacją w `docs/`.
+
+### `START_TUTAJ_GIT/`
+Instrukcje dla zespołu:
+- pierwsze kroki z Gitem,
+- sposób pracy z repo,
+- tworzenie pull requestów,
+- rozwiązywanie konfliktów.
+
+### `src/`
+Kod aplikacji backendowej w Java i Spring.
+
+### `infra/`
+Miejsce na pliki pomocnicze do uruchamiania projektu lokalnie.
+
+## Praca z repozytorium
+
+Jeśli dopiero zaczynasz pracę z tym repozytorium:
+
+1. Sklonuj repozytorium.
+2. Przeczytaj:
+   - [`ZASADY_WSPÓŁPRACY.md`](./ZASADY_WSPÓŁPRACY.md)
+   - [`START_TUTAJ_GIT/README.md`](./START_TUTAJ_GIT/README.md)
+3. Utwórz własny branch.
+4. Wprowadź zmiany.
+5. Wypchnij branch na GitHub.
+6. Otwórz Pull Request.
+
 ## Autorzy
 
 Marek Karbarz (Xler) - Właściciel repozytorium
- 
-Projekt realizowany zespolowo w ramach przedmiotu **Uslugi sieciowe w biznesie**.
+
+Projekt realizowany zespołowo w ramach przedmiotu **Usługi sieciowe w biznesie**.
